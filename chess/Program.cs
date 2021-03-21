@@ -19,7 +19,7 @@ namespace chess
 
             try
             {
-                E = new Program(800, 800, "Wislon Chess");
+                E = new Program(800, 800, "Wizlon Chess");
                 E.Run(60);
             }
             catch
@@ -55,25 +55,30 @@ namespace chess
             // LOAD ASSETS
 
             /* FIX */
-            string assetOriginDir = Path.GetFullPath(Path.Combine(System.IO.Directory.GetCurrentDirectory(), @"..\..\assets"));
-            string directory = System.IO.Directory.GetCurrentDirectory()+@"\assets";
-            directory = assetOriginDir;
-            Console.WriteLine("Console: " + directory);
-            Console.ReadKey();
-       
-            Icon = new Icon(directory + @"\icon.ico");
-            whitePawn = new TysonBitmap(directory + @"\whitePawn.png");
-            whiteRook = new TysonBitmap(directory + @"\whiteRook.png");
-            whiteBishop = new TysonBitmap(directory + @"\whiteBishop.png");
-            whiteKnight = new TysonBitmap(directory + @"\whiteKnight.png");
-            whiteKing = new TysonBitmap(directory + @"\whiteKing.png");
-            whiteQueen = new TysonBitmap(directory + @"\whiteQueen.png");
-            blackPawn = new TysonBitmap(directory + @"\blackPawn.png");
-            blackRook = new TysonBitmap(directory + @"\blackRook.png");
-            blackBishop = new TysonBitmap(directory + @"\blackBishop.png");
-            blackKnight = new TysonBitmap(directory + @"\blackKnight.png");
-            blackKing = new TysonBitmap(directory + @"\blackKing.png");
-            blackQueen = new TysonBitmap(directory + @"\blackQueen.png");
+            string assetOriginDir = Path.GetFullPath(Path.Combine(System.IO.Directory.GetCurrentDirectory(), @"..\..\assets\"));
+            string directory = Directory.GetCurrentDirectory() + @"\assets\";
+            Directory.CreateDirectory(directory);
+            FileInfo[] Files = new DirectoryInfo(assetOriginDir).GetFiles();
+            foreach (FileInfo file in Files)
+            {
+                string dest = directory + file.Name;
+                if (!File.Exists(dest)) File.Copy(assetOriginDir + file.Name, dest);
+            }
+
+      
+            Icon = new Icon(directory + "icon.ico");
+            whitePawn = new TysonBitmap(directory + "whitePawn.png");
+            whiteRook = new TysonBitmap(directory + "whiteRook.png");
+            whiteBishop = new TysonBitmap(directory + "whiteBishop.png");
+            whiteKnight = new TysonBitmap(directory + "whiteKnight.png");
+            whiteKing = new TysonBitmap(directory + "whiteKing.png");
+            whiteQueen = new TysonBitmap(directory + "whiteQueen.png");
+            blackPawn = new TysonBitmap(directory + "blackPawn.png");
+            blackRook = new TysonBitmap(directory + "blackRook.png");
+            blackBishop = new TysonBitmap(directory + "blackBishop.png");
+            blackKnight = new TysonBitmap(directory + "blackKnight.png");
+            blackKing = new TysonBitmap(directory + "blackKing.png");
+            blackQueen = new TysonBitmap(directory + "blackQueen.png");
 
             // SETUP
             GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
