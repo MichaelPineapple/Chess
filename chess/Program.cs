@@ -7,6 +7,7 @@ using System.Drawing;
 using OpenTK.Input;
 using System.Windows.Forms;
 using System.Windows;
+using System.IO;
 
 namespace chess
 {
@@ -52,7 +53,14 @@ namespace chess
         Program(int _windowWidth, int _windowHeight, string _windowName) : base(_windowWidth, _windowHeight, GraphicsMode.Default, _windowName)
         {
             // LOAD ASSETS
-            string directory = System.IO.Directory.GetCurrentDirectory();
+
+            /* FIX */
+            string assetOriginDir = Path.GetFullPath(Path.Combine(System.IO.Directory.GetCurrentDirectory(), @"..\..\assets"));
+            string directory = System.IO.Directory.GetCurrentDirectory()+@"\assets";
+            directory = assetOriginDir;
+            Console.WriteLine("Console: " + directory);
+            Console.ReadKey();
+       
             Icon = new Icon(directory + @"\icon.ico");
             whitePawn = new TysonBitmap(directory + @"\whitePawn.png");
             whiteRook = new TysonBitmap(directory + @"\whiteRook.png");
