@@ -40,7 +40,7 @@ namespace chess
 
         int[] chessBoard =
         {
-            +R, +H, +B, +Q, +K, +B, +H, +R,
+            +R, +H, +B, +K, +Q, +B, +H, +R,
             +P, +P, +P, +P, +P, +P, +P, +P,
             +E, +E, +E, +E, +E, +E, +E, +E,
             +E, +E, +E, +E, +E, +E, +E, +E,
